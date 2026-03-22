@@ -13,6 +13,21 @@ body {
 
 .login {
     border: 2px solid red;
-    width: 500px;
-    height: 500px;
+    width: 1000px;
+    height: 700px;
+    display: flex;
+    border-radius: 10px;
+}
+
+.box1 {
+    height: 100%;
+    width: 50%;
+    display: flex;
+}
+
+.box2 {
+    background-color: #49C0E3;
+    height: 100%;
+    width: 50%;
+    display: flex;
 }
