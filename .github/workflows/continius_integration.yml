@@ -19,9 +19,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Instalar validadores
+      - name: Instalar dependências
         run: |
-          npm install -g htmlhint stylelint stylelint-config-standard
+            npm init -y
+            npm install stylelint stylelint-config-standard htmlhint
 
       - name: Validar HTML
         run: htmlhint "**/*.html"
