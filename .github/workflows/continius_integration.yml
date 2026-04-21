@@ -21,15 +21,14 @@ jobs:
 
       - name: Instalar dependências
         run: |
-            npm init -y
-            npm install stylelint stylelint-config-standard htmlhint
-            npm install htmlhint stylelint stylelint-config-standard
+          npm init -y
+          npm install htmlhint stylelint stylelint-config-standard
 
       - name: Validar HTML
-        run: htmlhint "**/*.html"
+        run: npx htmlhint "**/*.html"
 
       - name: Validar CSS
-        run: stylelint "**/*.css"
+        run: npx stylelint "**/*.css"
 
   deploy:
     needs: ci
