@@ -6,12 +6,13 @@ on:
       - main
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   ci:
     runs-on: ubuntu-latest
-
-    permissions:
-        contents: write
+    
 
     steps:
       - name: Baixar código
