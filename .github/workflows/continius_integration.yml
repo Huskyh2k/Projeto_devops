@@ -30,6 +30,9 @@ jobs:
       - name: Validar CSS
         run: npx stylelint "**/*.css"
 
+      - name: Corrigir css
+        run: npx stylelint "**/*.css" --fix
+
   deploy:
     needs: ci
     runs-on: ubuntu-latest
