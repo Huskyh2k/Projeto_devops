@@ -23,6 +23,7 @@ jobs:
         run: |
             npm init -y
             npm install stylelint stylelint-config-standard htmlhint
+            npm install htmlhint stylelint stylelint-config-standard
 
       - name: Validar HTML
         run: htmlhint "**/*.html"
