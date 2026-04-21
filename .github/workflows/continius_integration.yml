@@ -1,0 +1,52 @@
+name: CI + Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v3
+
+      - name: Instalar Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: |
+          npm init -y
+          npm install htmlhint stylelint stylelint-config-standard
+
+      - name: Validar HTML
+        run: npx htmlhint "**/*.html"
+
+      - name: Validar CSS
+        run: npx stylelint "**/*.css"
+
+      - name: Corrigir css
+        run: npx stylelint "**/*.css" --fix
+
+  deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v3
+
+      - name: Deploy no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
