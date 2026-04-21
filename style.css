@@ -16,7 +16,7 @@ body {
     height: 700px;
     display: flex;
     border-radius: 20px;
-    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
     overflow: hidden;
 }
 
