@@ -34,8 +34,32 @@ jobs:
       - name: Validar CSS
         run: npx stylelint "**/*.css"
 
-      - name: Corrigir css
-        run: npx stylelint "**/*.css" --fix
+  pre_deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Baixar cÃ³digo
+        uses: actions/checkout@v3
+
+      - name: Validar arquivos publicados
+        run: |
+          test -f index.html
+          test -f style.css
+
+      - name: Empacotar preview do deploy
+        run: |
+          tar \
+            --exclude=".git" \
+            --exclude=".github" \
+            -czf site-preview.tgz .
+
+      - name: Salvar artefato do preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-preview
+          path: site-preview.tgz
 
   deploy:
     needs: ci
@@ -64,3 +88,4 @@ jobs:
           template: avatar-with-link
           include-extras: true
           last-commit-only: true
+        
