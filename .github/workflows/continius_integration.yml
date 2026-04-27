@@ -40,6 +40,7 @@ jobs:
   deploy:
     needs: ci
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
       - name: Baixar código
@@ -52,6 +53,7 @@ jobs:
           publish_dir: ./
 
   git:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
 
