@@ -56,7 +56,7 @@ jobs:
     steps:
 
       - name: Run Discord Webhook
-        uses: johnnyhuy/actions-discord-git-webhook@v1
+        uses: johnnyhuy/actions-discord-git-webhook@main
         with:
           webhook_url: ${{ secrets.DISCORD_PR_ALERT}}
           repo_name: ${{ github.repository }}
