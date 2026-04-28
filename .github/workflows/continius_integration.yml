@@ -59,5 +59,7 @@ jobs:
       - name: Run Discord Webhook
         uses: Sniddl/discord-commits@v1.8
         with:
-          webhook_url: ${{ secrets.DISCORD_PR_ALERT}}
-          repo_name: ${{ github.repository }}
+          webhook: ${{ secrets.DISCORD_PR_ALERT }}
+          template: avatar-with-link
+          include-extras: true
+          last-commit-only: true
